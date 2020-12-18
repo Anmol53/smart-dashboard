@@ -1,0 +1,134 @@
+.calculator-main {
+  color: black;
+  display: grid;
+  padding: 1rem;
+  max-width: 30rem;
+  grid-template-rows: auto 1fr;
+  font-family: "Roboto", sans-serif;
+}
+.calculator-heading {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  text-align: left;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 60px;
+}
+
+.input {
+  background-color: #262636;
+  color: #fff;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  border: 0px solid transparent;
+  padding: 1rem;
+  text-align: right;
+  font-size: 1rem;
+  outline: none;
+  overflow-y: scroll;
+}
+
+.iODisplay {
+  background-color: #262636;
+  color: #fff;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  border: 0px solid transparent;
+  padding: 1rem;
+  text-align: right;
+  font-size: 3.5rem;
+  outline: none;
+}
+
+.display:active {
+  border: 1px solid transparent;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  border-radius: 0rem;
+  transition: all 0.15s ease-in-out;
+  outline: none;
+}
+
+.btn-sym {
+  color: #fff;
+  background-color: #131313;
+  border-color: #262636;
+}
+
+.btn-sym:hover {
+  color: #fff;
+  background-color: #343434;
+  border-color: #343434;
+}
+
+.btn-sym:active {
+  background-color: #6b6666;
+}
+
+.btn-num {
+  color: #fff;
+  background-color: #060606;
+  border-color: #262636;
+}
+
+.btn-num:hover {
+  color: #fff;
+  background-color: #343434;
+  border-color: #343434;
+}
+
+.btn-num:active {
+  background-color: #6b6666;
+}
+
+.btn-equals {
+  color: #fff;
+  background-color: #bd6d12;
+  border-color: #262636;
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+.btn-equals:hover {
+  color: #111;
+  background-color: #df7e0f;
+  border-color: #343434;
+}
+
+.btn-equals:active {
+  background-color: #e69b47;
+}
+
+.mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.input::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.input::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(-45deg, #100e17, #201c29);
+}
+
+.input::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  background-image: linear-gradient(-45deg, #4b5d67, #322f3d, #59405c, #87556f);
+  outline: 1px solid slategrey;
+  border-radius: 60px;
+}
