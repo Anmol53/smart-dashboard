@@ -5,6 +5,7 @@ export default function Calculator(props) {
   let paraCount = 0;
   let resultFlag = true;
   let result = 0;
+  const [triggered, setTriggered] = useState(false);
   function inp(c) {
     const currDis = document.getElementById("iODisplay");
     const mainDis = document.getElementById("display");
@@ -148,14 +149,22 @@ export default function Calculator(props) {
   };
 
   useEffect(() => {
-    document.addEventListener("keydown", keyPressed);
-    return () => {
-      document.removeEventListener("keydown", keyPressed);
-    };
-  }, []);
+    console.log(triggered);
+    if (triggered) {
+      const calcElem = document.querySelector(".calculator-main");
+      calcElem.addEventListener("keydown", keyPressed);
+      return () => {
+        calcElem.removeEventListener("keydown", keyPressed);
+      };
+    }
+  }, [triggered]);
 
+  const triggerHandler = (isTriggered) => {
+    setTriggered(isTriggered);
+  };
   return (
     <Modal
+      isTriggered={triggerHandler}
       trigger="Calculator"
       className="calculator-main"
       triggerStyle={props.triggerStyle}
@@ -171,7 +180,9 @@ export default function Calculator(props) {
           className="iODisplay"
           type="text"
           value="0"
-          readonly="readonly"
+          readOnly="readonly"
+          autoComplete="off"
+          autoFocus
         />
         <button type="button" className="btn btn-sym" onClick={() => inp("(")}>
           (

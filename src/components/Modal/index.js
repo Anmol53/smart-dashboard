@@ -10,6 +10,7 @@ export default function Modal(props) {
         <i
           onClick={(e) => {
             setShow(true);
+            props.isTriggered(true);
             setShowClass("modal-container in");
           }}
           className={`modal-trigger ${props.trigger} ${props.triggerStyle}`}
@@ -18,6 +19,7 @@ export default function Modal(props) {
         <button
           onClick={(e) => {
             setShow(true);
+            props.isTriggered(true);
             setShowClass("modal-container in");
           }}
           className={`modal-trigger ${props.triggerStyle}`}
@@ -32,6 +34,7 @@ export default function Modal(props) {
               <i
                 onClick={(e) => {
                   setShowClass("modal-container in out");
+                  props.isTriggered(false);
                   setTimeout(() => setShow(false), 300);
                 }}
                 className="fas fa-window-close model-close"
