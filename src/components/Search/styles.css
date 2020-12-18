@@ -1,0 +1,37 @@
+.search-main {
+  color: white;
+  border: 1px solid #393e46;
+  border-radius: 20px;
+  max-width: 200px;
+  padding: 0.2rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  /* width: 200px; */
+  align-items: center;
+}
+
+.search-icon-1 {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  grid-column: 1/2;
+}
+.search-icon-2 {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  grid-column: 20/21;
+}
+
+.search-text {
+  color: white;
+  background: none;
+  margin: 0;
+  border: none;
+  /* border-bottom: 1px solid white; */
+  line-height: 1rem;
+  font-size: 0.8rem;
+  outline: none;
+  padding: 0 0.5rem;
+  grid-column: 2/20;
+}
