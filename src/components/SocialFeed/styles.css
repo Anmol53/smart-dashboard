@@ -1,0 +1,11 @@
+.social-feed-main {
+  border: 1px solid #393e46;
+  border-left: none;
+  padding: 0 0.5rem;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: grid;
+  overflow-y: scroll;
+  height: 55vh;
+  direction: rtl;
+}

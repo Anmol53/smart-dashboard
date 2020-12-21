@@ -5,6 +5,7 @@ import Clock from "./Clock";
 import Calculator from "./Calculator";
 import Modal from "./Modal";
 import NewsFeed from "./NewsFeed";
+import SocialFeed from "./SocialFeed";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <div className="app-feed">
           <NewsFeed />
           <NewsFeed />
+          <SocialFeed />
         </div>
       </div>
     </div>
