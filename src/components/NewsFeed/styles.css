@@ -1,0 +1,9 @@
+.news-feed-main {
+  border: 1px solid #393e46;
+  border-right: none;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: grid;
+  overflow-y: scroll;
+  height: 55vh;
+}

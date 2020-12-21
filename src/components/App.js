@@ -4,6 +4,7 @@ import Search from "./Search";
 import Clock from "./Clock";
 import Calculator from "./Calculator";
 import Modal from "./Modal";
+import NewsFeed from "./NewsFeed";
 
 function App() {
   return (
@@ -37,8 +38,14 @@ function App() {
         <Weather className="app-weather" />
       </div>
       <div className="app-main">
-        <h1>Hey Anmol!</h1>
-        <Search className="app-search" />
+        <div className="app-center">
+          <h1>Hey Anmol!</h1>
+          <Search className="app-search" />
+        </div>
+        <div className="app-feed">
+          <NewsFeed />
+          <NewsFeed />
+        </div>
       </div>
     </div>
   );
