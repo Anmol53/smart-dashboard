@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
+import cities from "./current-city-name.js";
 
 export default function Weather(props) {
   const BaseURL = "https://api.openweathermap.org/data/2.5/";
@@ -10,6 +11,7 @@ export default function Weather(props) {
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
   const [aqi, setAqi] = useState(0);
+  const [editable, setEditable] = useState(false);
   useEffect(() => {
     fetch(`${BaseURL}/weather?q=${city}&appid=${APIKey}&units=metric`)
       .then((r) => r.json())
@@ -53,7 +55,39 @@ export default function Weather(props) {
     <div className={`weather-main ${props.className}`}>
       <span className="weather-icon">{icon}</span>
       <span className="weather-temp">{`${temperature}°`}</span>
-      <span className="weather-city">{city}</span>
+      <span className="weather-city">
+        {editable ? (
+          <>
+            <input type="text" list="city" id="city-inp" />
+            <datalist id="city" className="weather-city-list">
+              {cities.cities.map((cityName) => {
+                return <option>{cityName}</option>;
+              })}
+            </datalist>
+            <i
+              className="fas fa-check weather-city-check"
+              onClick={() => {
+                const newCity = document.getElementById("city-inp").value;
+                if (newCity && newCity.length > 0) {
+                  setCity();
+                }
+                setEditable(false);
+              }}
+            ></i>
+          </>
+        ) : (
+          <>
+            {city}
+            <i
+              className="far fa-edit weather-city-edit"
+              onClick={() => {
+                setEditable(true);
+              }}
+            ></i>
+          </>
+        )}
+      </span>
+
       <span className="weather-aqi">{`Air Quality Index: ${aqi}`}</span>
     </div>
   );

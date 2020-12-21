@@ -14,6 +14,26 @@
   grid-column: 1 / 3;
 }
 
+.weather-city-edit {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+}
+
+.weather-city-input {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+
+.weather-city-check {
+  padding-left: 0.2rem;
+  font-size: 0.8rem;
+  color: green;
+}
+
+.weather-city-list {
+}
+
 .weather-aqi {
   font-size: 0.7rem;
   line-height: 1rem;
