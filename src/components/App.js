@@ -45,7 +45,6 @@ function App() {
         </div>
         <div className="app-feed">
           <NewsFeed />
-          <NewsFeed />
           <SocialFeed />
         </div>
       </div>
