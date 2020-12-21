@@ -16,6 +16,9 @@ export default function Weather(props) {
     fetch(`${BaseURL}/weather?q=${city}&appid=${APIKey}&units=metric`)
       .then((r) => r.json())
       .then((r) => {
+        if (r.cod !== 200) {
+          throw new Error("Invalid City");
+        }
         setCity(r.name);
         setTemperature(parseInt(r.main.temp));
         setIcon(getWeatherIcon(r.weather[0].id));
@@ -28,6 +31,11 @@ export default function Weather(props) {
           .then((r) => {
             setAqi(r.list[0].components.pm2_5);
           });
+      })
+      .catch(() => {
+        setTemperature("NA");
+        setIcon("");
+        setAqi("NA");
       });
   }, [city, lat, lon]);
 
@@ -69,7 +77,7 @@ export default function Weather(props) {
               onClick={() => {
                 const newCity = document.getElementById("city-inp").value;
                 if (newCity && newCity.length > 0) {
-                  setCity();
+                  setCity(newCity);
                 }
                 setEditable(false);
               }}
