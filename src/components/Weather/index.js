@@ -7,19 +7,18 @@ export default function Weather(props) {
   const APIKey = "7c62e1459cbf463cc4b2e0a5cff45254";
   const [temperature, setTemperature] = useState(0);
   const [icon, setIcon] = useState("");
-  const [city, setCity] = useState("bhopal");
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
   const [aqi, setAqi] = useState(0);
   const [editable, setEditable] = useState(false);
   useEffect(() => {
-    fetch(`${BaseURL}/weather?q=${city}&appid=${APIKey}&units=metric`)
+    fetch(`${BaseURL}/weather?q=${props.city}&appid=${APIKey}&units=metric`)
       .then((r) => r.json())
       .then((r) => {
         if (r.cod !== 200) {
           throw new Error("Invalid City");
         }
-        setCity(r.name);
+        props.setCity(r.name);
         setTemperature(parseInt(r.main.temp));
         setIcon(getWeatherIcon(r.weather[0].id));
         setLat(r.coord.lat);
@@ -37,7 +36,7 @@ export default function Weather(props) {
         setIcon("");
         setAqi("NA");
       });
-  }, [city, lat, lon]);
+  }, [props, lat, lon]);
 
   const getWeatherIcon = (condition) => {
     if (condition < 300) {
@@ -77,7 +76,7 @@ export default function Weather(props) {
               onClick={() => {
                 const newCity = document.getElementById("city-inp").value;
                 if (newCity && newCity.length > 0) {
-                  setCity(newCity);
+                  props.setCity(newCity);
                 }
                 setEditable(false);
               }}
@@ -85,7 +84,7 @@ export default function Weather(props) {
           </>
         ) : (
           <>
-            {city}
+            {props.city}
             <i
               className="far fa-edit weather-city-edit"
               onClick={() => {
