@@ -15,7 +15,7 @@ export default function NewsFeed(props) {
       .then((r) => {
         setNewsData(r.articles);
       });
-  }, []);
+  }, [props.countryCode]);
 
   const renderNews = () => {
     return newsData
