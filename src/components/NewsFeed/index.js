@@ -29,6 +29,7 @@ export default function NewsFeed(props) {
             imgUrl={news.urlToImage}
             time={news.publishedAt}
             author={news.author}
+            key={`news_${idx}_${idx * Math.random()}`}
           />
         );
       });
