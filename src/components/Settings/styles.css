@@ -1,0 +1,32 @@
+.setting-modal {
+  background-color: rgba(25, 25, 25, 0.7);
+  height: 75vh;
+  width: 60vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+.setting-left-pane {
+  background-color: rgba(5, 5, 5, 0.8);
+  padding: 1.8rem 0.2rem;
+  display: grid;
+  border-right: 1px solid white;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fill, minmax(2rem, 1fr));
+}
+
+.setting-nav {
+  text-decoration: none;
+  font-weight: 600;
+  color: rgb(100, 100, 100);
+  cursor: pointer;
+}
+
+.setting-nav-active {
+  color: white;
+}
+.error-msg {
+  color: red;
+}
