@@ -1,0 +1,44 @@
+.worldclock-main {
+  margin: auto;
+  display: grid;
+  background-color: rgba(25, 25, 25, 0.7);
+  padding: 1rem;
+  max-width: 30rem;
+  grid-template-rows: auto 1fr;
+  font-family: "Roboto", sans-serif;
+}
+
+.worldclock-heading {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.worldclock-input {
+  background: 0;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+}
+.worldclock-content {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.worldclock-confirm-button {
+  cursor: pointer;
+  color: green;
+  justify-self: center;
+}
+.blink {
+  color: white;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+}
+.worldclock-result {
+  grid-column: 1/3;
+}
