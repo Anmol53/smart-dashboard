@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 export default function Clock(props) {
-  const [value, setValue] = useState(new Date());
-
+  const [value, setValue] = useState(props.date);
   useEffect(() => {
-    const interval = setInterval(() => setValue(new Date()), 1000);
-
+    const interval = setInterval(() => {
+      value.setSeconds(value.getSeconds() + 1);
+      setValue(new Date(value));
+    }, 1000);
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [value]);
   return (
     <div className={`clock-main ${props.className}`}>
       <span className="clock-time">
