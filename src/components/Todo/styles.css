@@ -1,0 +1,148 @@
+.todo-main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 55vh;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.todo-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  border-bottom: 2px solid #393e46;
+  padding: 0.4rem 0.6rem;
+  place-items: center;
+}
+.todo-header i {
+  font-size: 0.9rem;
+}
+.todo-header span {
+  font-size: 1.1rem;
+  padding: 0.1rem;
+}
+.todo-header input {
+  color: white;
+  background: none;
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  padding: 0.1rem;
+}
+
+.todo-container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0.6rem;
+}
+.todo-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-container ul li.task-item {
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+}
+li.task-item .bullet {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  background: white;
+  display: inline-block;
+  border-radius: 33% 67% 65% 35% / 46% 62% 38% 54%;
+}
+li.task-item .todo-task {
+  padding: 0 0.4rem;
+  text-align: left;
+  letter-spacing: -0.04rem;
+  line-height: 1;
+}
+
+li.task-item input {
+  color: white;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0 0.3rem;
+}
+
+.todo-done .todo-task {
+  color: rgb(175, 219, 92);
+  text-decoration: line-through;
+}
+.todo-done-tick {
+  color: green;
+  font-size: 1.2rem;
+  position: relative;
+  top: -5px;
+  animation: rotate 500ms linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+.new-todo {
+  color: white;
+  border: 1px solid #393e46;
+  border-radius: 20px;
+  padding: 0.2rem;
+  display: grid;
+  grid-template-columns: 20fr 1fr;
+  align-items: center;
+}
+.new-todo input {
+  color: white;
+  background: none;
+  border: none;
+  line-height: 1rem;
+  font-size: 0.8rem;
+  outline: none;
+  padding: 0 0.5rem;
+}
+
+.todo-add-icon {
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+.todo-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-top: 2px solid #393e46;
+  padding: 0.3rem 0.2rem;
+}
+
+.todo-footer i {
+  font-size: 1.2rem;
+}
+
+i.add-todo-list {
+  font-size: 2rem;
+  line-height: 2rem;
+  border-left: 1px solid #393e46;
+  border-right: 1px solid #393e46;
+}
+
+.icon-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  color: white;
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+}
