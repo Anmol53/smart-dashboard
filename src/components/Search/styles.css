@@ -6,7 +6,6 @@
   padding: 0.2rem 1rem;
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  /* width: 200px; */
   align-items: center;
 }
 
@@ -28,10 +27,13 @@
   background: none;
   margin: 0;
   border: none;
-  /* border-bottom: 1px solid white; */
   line-height: 1rem;
   font-size: 0.8rem;
   outline: none;
   padding: 0 0.5rem;
   grid-column: 2/20;
+}
+.search-text::placeholder {
+  color: white;
+  opacity: 0.8;
 }

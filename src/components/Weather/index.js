@@ -58,6 +58,14 @@ export default function Weather(props) {
     }
   };
 
+  const changeCity = () => {
+    const newCity = document.getElementById("city-inp").value;
+    if (newCity && newCity.length > 0) {
+      props.setCity(newCity);
+    }
+    setEditable(false);
+  };
+
   return (
     <div className={`weather-main ${props.className}`}>
       <span className="weather-icon">{icon}</span>
@@ -65,22 +73,22 @@ export default function Weather(props) {
       <span className="weather-city">
         {editable ? (
           <>
-            <input type="text" list="city" id="city-inp" />
+            <input
+              type="text"
+              list="city"
+              id="city-inp"
+              onBlur={changeCity}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  changeCity();
+                }
+              }}
+            />
             <datalist id="city" className="weather-city-list">
               {cities.cities.map((cityName) => {
                 return <option>{cityName}</option>;
               })}
             </datalist>
-            <i
-              className="fas fa-check weather-city-check"
-              onClick={() => {
-                const newCity = document.getElementById("city-inp").value;
-                if (newCity && newCity.length > 0) {
-                  props.setCity(newCity);
-                }
-                setEditable(false);
-              }}
-            ></i>
           </>
         ) : (
           <>

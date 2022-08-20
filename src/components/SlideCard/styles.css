@@ -1,0 +1,68 @@
+.slide-card-main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 320px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.slide-card-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  border-bottom: 2px solid #393e46;
+  padding: 0.4rem 0.6rem;
+  place-items: center;
+}
+.slide-card-header i {
+  font-size: 0.9rem;
+}
+.slide-card-header span {
+  font-size: 1.1rem;
+  padding: 0.1rem;
+}
+.slide-card-header input {
+  color: white;
+  background: none;
+  font-size: 1.1rem;
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+  padding: 0.1rem;
+}
+
+.slide-card-container {
+  padding: 0.6rem;
+}
+
+.slide-card-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-top: 2px solid #393e46;
+  padding: 0.3rem 0.2rem;
+}
+
+.slide-card-footer i {
+  font-size: 1.2rem;
+}
+
+i.slide-card-add-item {
+  font-size: 2rem;
+  line-height: 2rem;
+  border-left: 1px solid #393e46;
+  border-right: 1px solid #393e46;
+}
+
+.icon-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  color: white;
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+}

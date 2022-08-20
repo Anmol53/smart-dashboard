@@ -14,6 +14,16 @@
   grid-column: 1 / 3;
 }
 
+.weather-city input {
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+  color: white;
+  max-width: 140px;
+  font-size: 1rem;
+}
+
 .weather-city-edit {
   padding-left: 1rem;
   font-size: 0.8rem;

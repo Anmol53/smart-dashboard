@@ -4,13 +4,16 @@ html {
   padding: 0;
   font-family: "Montserrat", sans-serif;
 }
-
+.bg-wrapper {
+  background-color: #252a34;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .app {
   padding: 0.2rem;
   color: white;
   text-align: center;
-  background-color: #252a34;
-  background-image: url("bg.jpg");
+  background-color: rgba(0, 0, 0, 0.25);
   min-height: 99vh;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -32,9 +35,8 @@ html {
   justify-content: center;
   align-content: center;
 }
-.app-todo {
+.app-bottom {
   display: grid;
-  justify-content: center;
   align-content: end;
 }
 .app-feed {
@@ -98,6 +100,20 @@ html {
 
 .app-nav-dropdown-content .app-nav-btn:hover {
   background-color: rgba(25, 25, 25, 0.8);
+}
+.left-bottom-link {
+  cursor: pointer;
+  justify-self: start;
+}
+
+.center-bottom-link {
+  cursor: pointer;
+  justify-self: center;
+}
+
+.right-bottom-link {
+  cursor: pointer;
+  justify-self: end;
 }
 
 /* Scroll Bar Style */

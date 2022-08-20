@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Task from "./Task";
+import SlideCard from "./../SlideCard";
 import "./styles.css";
 
 const Todo = (props) => {
   const [lists, setLists] = useState([]);
   const [currListIndex, setCurrListIndex] = useState(undefined);
-  const [updatedTitle, setUpdatedTitle] = useState("");
-  const [editableTitle, setEditableTitle] = useState(false);
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [willFetch, setWillFetch] = useState(true);
 
   const serverURL = "http://localhost:9999/";
 
   /******** Functions for CRUD operations on List ********/
   // Create: List
-  // TODO: function for Create List
   const addList = () => {
     fetch(`${serverURL}todoList/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        listName: `List ${lists.length + 1}`,
+        listName: `Title ${lists.length + 1}`,
       }),
       credentials: "include",
     })
@@ -30,27 +29,29 @@ const Todo = (props) => {
         temp.push(result.data.list);
         setLists(temp);
         setCurrListIndex(temp.length - 1);
-        setEditableTitle(true);
       });
   };
 
   // Read: array of List
   useEffect(() => {
-    fetch(`${serverURL}todoList/`, { credentials: "include" })
-      .then((response) => response.json())
-      .then((res) => {
-        const sortedArr = res.data.lists.sort((a, b) => {
-          const aDate = new Date(a.creationTime).valueOf();
-          const bDate = new Date(b.creationTime).valueOf();
-          return aDate - bDate;
+    if (willFetch) {
+      fetch(`${serverURL}todoList/`, { credentials: "include" })
+        .then((response) => response.json())
+        .then((res) => {
+          const sortedArr = res.data.lists.sort((a, b) => {
+            const aDate = new Date(a.creationTime).valueOf();
+            const bDate = new Date(b.creationTime).valueOf();
+            return aDate - bDate;
+          });
+          setLists(sortedArr);
+          setCurrListIndex(0);
         });
-        setLists(sortedArr);
-        setCurrListIndex(0);
-      });
-  }, []);
+    }
+    setWillFetch(false);
+  }, [willFetch]);
 
   // Update: name of ith List
-  const updateTitle = () => {
+  const updateTitle = (updatedTitle) => {
     const id = lists[currListIndex]._id;
     fetch(`${serverURL}todoList/${id}`, {
       method: "PUT",
@@ -64,7 +65,6 @@ const Todo = (props) => {
         temp[currListIndex] = result.data.list;
         setLists(temp);
       });
-    setEditableTitle(false);
   };
 
   // Delete: ith List
@@ -78,11 +78,11 @@ const Todo = (props) => {
       .then((result) => {
         const temp = [...lists];
         temp.splice(i, 1);
-        if (i >= temp.length) {
-          setCurrListIndex(temp.length - 1);
-        }
         if (temp.length <= 0) {
+          setWillFetch(true);
           setCurrListIndex(undefined);
+        } else if (i >= temp.length) {
+          setCurrListIndex(temp.length - 1);
         }
         setLists(temp);
       });
@@ -115,7 +115,7 @@ const Todo = (props) => {
 
   // Read: array of Todo
   useEffect(() => {
-    if (currListIndex !== undefined) {
+    if (lists && lists.length > 0 && currListIndex !== undefined) {
       fetch(`${serverURL}todo/${lists[currListIndex]._id}`, {
         credentials: "include",
       })
@@ -128,7 +128,6 @@ const Todo = (props) => {
           });
           setTasks(sortedArr);
         });
-      setUpdatedTitle(lists[currListIndex].listName);
     }
   }, [currListIndex, lists]);
 
@@ -189,28 +188,16 @@ const Todo = (props) => {
   };
 
   return (
-    <div className="todo-main">
-      <div className="todo-header">
-        <i className="fas fa-external-link-alt"></i>
-        {editableTitle ? (
-          <input
-            type="text"
-            value={updatedTitle}
-            onChange={(e) => setUpdatedTitle(e.target.value)}
-            onBlur={updateTitle}
-            autoFocus
-            autoComplete="off"
-          />
-        ) : (
-          <span onClick={() => setEditableTitle(true)}>
-            {lists[currListIndex] && lists[currListIndex].listName}
-          </span>
-        )}
-        <i
-          className="fas fa-trash-alt"
-          onClick={() => deleteList(currListIndex)}
-        ></i>
-      </div>
+    <SlideCard
+      list={lists.map((l) => l.listName)}
+      updateTitle={updateTitle}
+      deleteItem={deleteList}
+      addItem={addList}
+      currIndex={currListIndex}
+      setCurrIndex={setCurrListIndex}
+      // TODO: Create function for fullscreen
+      /*fullScreen= do something*/
+    >
       <div className="todo-container">
         <ul>
           {tasks.map((val, index) => {
@@ -239,27 +226,7 @@ const Todo = (props) => {
           <i className="fas fa-plus-circle ico-btn" onClick={add}></i>
         </div>
       </div>
-      <div className="todo-footer">
-        <button
-          disabled={currListIndex <= 0}
-          className="icon-btn"
-          onClick={() => setCurrListIndex(currListIndex - 1)}
-        >
-          <i className="fas fa-arrow-left"></i>
-        </button>
-        <i
-          className="fas fa-plus-circle ico-btn add-todo-list"
-          onClick={addList}
-        ></i>
-        <button
-          disabled={currListIndex >= lists.length - 1}
-          className="icon-btn"
-          onClick={() => setCurrListIndex(currListIndex + 1)}
-        >
-          <i className="fas fa-arrow-right"></i>
-        </button>
-      </div>
-    </div>
+    </SlideCard>
   );
 };
 

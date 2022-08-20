@@ -20,6 +20,41 @@ export default function General(props) {
         String.fromCodePoint(char.charCodeAt(0) + 127397)
       );
   };
+
+  const changeName = () => {
+    const newName = document.getElementById("user-name-inp").value;
+    if (newName && newName.length > 0) {
+      if (newName.length <= 20) {
+        props.setUserName(newName);
+      } else {
+        setErrorMsg("Name can be of Maximum 20 Characters");
+      }
+    }
+    setEditableName(false);
+  };
+
+  const changeCity = () => {
+    const newCity = document.getElementById("city-inp").value;
+    if (newCity && newCity.length > 0) {
+      props.setCity(newCity);
+    }
+    setEditableCity(false);
+  };
+
+  const changeCountry = () => {
+    let newCountry = document.getElementById("country-inp").value;
+    if (newCountry && newCountry.length > 0) {
+      newCountry = newCountry.substr(0, newCountry.length - 5);
+      const cObj = countries.countries.filter(
+        (c) => c.name.toLowerCase() === newCountry.toLowerCase()
+      );
+      if (cObj.length > 0) {
+        props.setCountry(cObj[0]);
+      }
+    }
+    setEditableCountry(false);
+  };
+
   return (
     <div className="setting-general">
       <div className="general-labels">
@@ -36,21 +71,13 @@ export default function General(props) {
               className="general-input"
               autoFocus
               placeholder={props.userName}
-            />
-            <i
-              className="fas fa-check general-confirm-button"
-              onClick={() => {
-                const newName = document.getElementById("user-name-inp").value;
-                if (newName && newName.length > 0) {
-                  if (newName.length <= 20) {
-                    props.setUserName(newName);
-                  } else {
-                    setErrorMsg("Name can be of Maximum 20 Characters");
-                  }
+              onBlur={changeName}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  changeName();
                 }
-                setEditableName(false);
               }}
-            ></i>
+            />
           </div>
         ) : (
           <span
@@ -73,22 +100,18 @@ export default function General(props) {
               className="general-input"
               autoFocus
               placeholder={props.city}
+              onBlur={changeCity}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  changeCity();
+                }
+              }}
             />
             <datalist id="city" className="">
               {cities.cities.map((cityName) => {
                 return <option>{cityName}</option>;
               })}
             </datalist>
-            <i
-              className="fas fa-check general-confirm-button"
-              onClick={() => {
-                const newCity = document.getElementById("city-inp").value;
-                if (newCity && newCity.length > 0) {
-                  props.setCity(newCity);
-                }
-                setEditableCity(false);
-              }}
-            ></i>
           </div>
         ) : (
           <span
@@ -110,6 +133,12 @@ export default function General(props) {
               className="general-input"
               autoFocus
               placeholder={props.country.name}
+              onBlur={changeCountry}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  changeCountry();
+                }
+              }}
             />
             <datalist id="country" className="">
               {countries.countries.map((country, id) => {
@@ -120,22 +149,6 @@ export default function General(props) {
                 );
               })}
             </datalist>
-            <i
-              className="fas fa-check general-confirm-button"
-              onClick={() => {
-                let newCountry = document.getElementById("country-inp").value;
-                if (newCountry && newCountry.length > 0) {
-                  newCountry = newCountry.substr(0, newCountry.length - 5);
-                  const cObj = countries.countries.filter(
-                    (c) => c.name.toLowerCase() === newCountry.toLowerCase()
-                  );
-                  if (cObj.length > 0) {
-                    props.setCountry(cObj[0]);
-                  }
-                }
-                setEditableCountry(false);
-              }}
-            ></i>
           </div>
         ) : (
           <span

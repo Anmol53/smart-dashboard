@@ -1,41 +1,7 @@
-.todo-main {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 55vh;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.todo-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  border-bottom: 2px solid #393e46;
-  padding: 0.4rem 0.6rem;
-  place-items: center;
-}
-.todo-header i {
-  font-size: 0.9rem;
-}
-.todo-header span {
-  font-size: 1.1rem;
-  padding: 0.1rem;
-}
-.todo-header input {
-  color: white;
-  background: none;
-  font-size: 1.1rem;
-  width: 100%;
-  text-align: center;
-  border: none;
-  outline: none;
-  padding: 0.1rem;
-}
-
 .todo-container {
   display: grid;
   grid-template-rows: 1fr auto;
-  padding: 0.6rem;
+  height: 100%;
 }
 .todo-container ul {
   list-style: none;
@@ -74,7 +40,6 @@ li.task-item input {
 
 .todo-done .todo-task {
   color: rgb(175, 219, 92);
-  text-decoration: line-through;
 }
 .todo-done-tick {
   color: green;
@@ -115,34 +80,4 @@ li.task-item input {
   display: inline-block;
   font-size: 1rem;
   line-height: 1.2rem;
-}
-
-.todo-footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border-top: 2px solid #393e46;
-  padding: 0.3rem 0.2rem;
-}
-
-.todo-footer i {
-  font-size: 1.2rem;
-}
-
-i.add-todo-list {
-  font-size: 2rem;
-  line-height: 2rem;
-  border-left: 1px solid #393e46;
-  border-right: 1px solid #393e46;
-}
-
-.icon-btn {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: none;
-  color: white;
-}
-
-.icon-btn:disabled {
-  opacity: 0.5;
 }
