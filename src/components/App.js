@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import publicIp from "public-ip";
+import {publicIpv4} from "public-ip";
 import { createApi } from "unsplash-js";
 import "./App.css";
 import Calculator from "./Calculator";
@@ -59,7 +59,7 @@ function App() {
 
   useEffect(() => {
     const getClientIp = async () =>
-      await publicIp.v4({
+      await publicIpv4({
         fallbackUrls: ["https://ifconfig.co/ip"],
       });
     getClientIp().then((res) => {
