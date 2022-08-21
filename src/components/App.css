@@ -10,11 +10,10 @@ html {
   background-size: cover;
 }
 .app {
-  padding: 0.2rem;
   color: white;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
-  min-height: 99vh;
+  height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
 }
@@ -24,6 +23,7 @@ html {
   justify-content: space-between;
 }
 .app-main {
+  padding: 0.2rem;
   display: grid;
   grid-template: auto 1fr / 1fr 3fr 1fr;
   justify-content: center;

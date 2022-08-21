@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: white;
-  border-radius: 20px;
-  padding: 0.1rem 1rem;
+  border-bottom-left-radius: 40px;
+  padding: 0.1rem 1.2rem 1rem;
+  background-color: #0000007f;
   min-width: 110px;
 }
 
