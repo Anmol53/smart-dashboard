@@ -34,7 +34,6 @@ function App() {
       )
         .then((r) => r.json())
         .then((r) => {
-          console.log(r);
           setCity(r.city);
         });
     }
@@ -45,15 +44,12 @@ function App() {
 
   const [bgURL, setBgURL] = useState(null);
   useEffect(() => {
-    console.log("useEffect of bg");
     unsplash.photos
       .getRandom({
         orientation: "landscape",
-        count: 1,
-        query: "nature",
-        collections: "827743, 1457745",
+        collections: "uPLFJZyFD9M",
       })
-      .then((res) => setBgURL(res.response[0].urls.regular))
+      .then((res) => setBgURL(res.response.urls.regular))
       .catch((e) => console.log("something went wrong!"));
   }, []);
 
