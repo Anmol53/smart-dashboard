@@ -7,7 +7,7 @@
   padding: 1rem;
   max-width: 80vw;
   max-height: 95vh;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .worldclock-heading {
