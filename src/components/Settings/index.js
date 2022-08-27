@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from ".././Modal";
 import General from "./General";
 import GroupTabs from "./GroupTabs";
+import WorldClock from "./WorldClock";
 import "./styles.css";
 
 export default function Settings(props) {
@@ -22,6 +23,8 @@ export default function Settings(props) {
         );
       case "group_tab":
         return <GroupTabs />;
+      case "world_clock":
+        return <WorldClock />;
       default:
         <></>;
     }
@@ -57,6 +60,18 @@ export default function Settings(props) {
           }}
         >
           Group Tabs
+        </nav>
+        <nav
+          className={
+            active === "world_clock"
+              ? "setting-nav setting-nav-active"
+              : "setting-nav"
+          }
+          onClick={() => {
+            setActive("world_clock");
+          }}
+        >
+          World Clock
         </nav>
       </div>
       {renderChoosenSetting()}
