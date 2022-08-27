@@ -2,17 +2,43 @@
   color: white;
   display: grid;
   grid-template-columns: 1fr;
-  color: white;
-  border-radius: 20px;
   padding: 0.1rem 1rem;
 }
+
+.clock-additional-detail{
+  font-size: 1rem;
+  line-height: 2.4rem;
+  grid-column: 1 / 2;
+}
+
 .clock-day {
   font-size: 1rem;
   line-height: 1.4rem;
   grid-column: 1 / 2;
 }
+
 .clock-time {
   font-size: 2rem;
   line-height: 2.4rem;
   grid-column: 1 / 2;
+}
+
+.clock-zone {
+  font-size: 1rem;
+  line-height: 2.4rem;
+  grid-column: 1 / 2;
+}
+
+.clock-detailed{
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  gap: 1rem;
+}
+
+.clock-detailed .clock-time{
+  font-size: 2.2rem;
+}
+
+.clock-detailed .clock-day{
+  font-size: 1.2rem;
 }

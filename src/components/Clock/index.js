@@ -18,7 +18,14 @@ export default function Clock(props) {
     };
   }, [value]);
 
-  return (
+  return (props.type && props.type === "detailed") ? (
+    <div className={`clock-main clock-detailed ${props.className}`}>
+      {props.additionalDetail && <span  className="clock-additional-detail">{props.additionalDetail}</span>}
+      <span className="clock-time">{value.format("hh:mm A")}</span>
+      <span className="clock-day">{value.format("dddd, MMMM DD, YYYY")}</span>
+      <span className="clock-zone">Zone Offset: {value.format("Z")}</span>
+    </div>
+  ) : (
     <div className={`clock-main ${props.className}`}>
       <span className="clock-time">{value.format("hh:mm A")}</span>
       <span className="clock-day">{value.format("dddd, MMMM DD, YYYY")}</span>
