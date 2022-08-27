@@ -3,24 +3,20 @@ import Modal from ".././Modal";
 import Clock from ".././Clock";
 import "./styles.css";
 import moment from "moment";
+import momentTZ from "moment-timezone";
+import timezones from "../Data/timezone.js";
+
 export default function WorldClock(props) {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("Etc/UTC");
   const [blink, setBlink] = useState("");
   const [value, setValue] = useState(moment(new Date()));
   const [locations, setLocations] = useState([]);
-  // TODO: CORS policy ¯\_(ツ)_/¯
   useEffect(() => {
-    fetch("http://worldtimeapi.org/api/timezone/")
-      .then((r) => r.json())
-      .then((r) => setLocations(r));
-  });
+    setLocations(timezones);
+  }, []);
   useEffect(() => {
-    fetch(`http://worldtimeapi.org/api/timezone/${location}`)
-      .then((r) => r.json())
-      .then((r) => {
-        console.log(r);
-        setValue(moment(r.datetime));
-      });
+    const momentDate = momentTZ(new Date());
+    setValue(moment(momentDate.tz(location)));
   }, [location]);
   return (
     <Modal
@@ -40,11 +36,18 @@ export default function WorldClock(props) {
           id="location-inp"
           className="worldclock-input"
           autoFocus
-          placeholder="Choose Location"
+          placeholder={"Choose Location"}
         />
         <datalist id="location">
-          {locations.map((opt) => {
-            return <option>{opt}</option>;
+          {locations.map((opt, idx) => {
+            return (
+              <option
+                value={opt.zone}
+                key={`location_option_${idx}_${idx * Math.random()}`}
+              >
+                {opt.utc_offset}
+              </option>
+            );
           })}
         </datalist>
         <i

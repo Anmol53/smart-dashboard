@@ -5,6 +5,10 @@ export default function Clock(props) {
   const [value, setValue] = useState(props.date);
 
   useEffect(() => {
+    setValue(moment(props.date));
+  }, [props]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       value.add(1, "s");
       setValue(moment(value));
@@ -13,6 +17,7 @@ export default function Clock(props) {
       clearInterval(interval);
     };
   }, [value]);
+
   return (
     <div className={`clock-main ${props.className}`}>
       <span className="clock-time">{value.format("hh:mm A")}</span>
