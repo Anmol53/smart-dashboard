@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {publicIpv4} from "public-ip";
+import { publicIpv4 } from "public-ip";
 import { createApi } from "unsplash-js";
 import "./App.css";
 import Calculator from "./Calculator";
@@ -13,6 +13,7 @@ import Todo from "./Todo";
 import Notes from "./Notes";
 import Weather from "./Weather";
 import WorldClock from "./WorldClock";
+import moment from "moment";
 
 const unsplash = createApi({
   accessKey: "hZEsU_wMKAFATL4tabmb97_pZAMFI3CI8zAS412-A3g",
@@ -64,6 +65,7 @@ function App() {
     });
     return () => {};
   }, []);
+
   return (
     <div
       className="bg-wrapper"
@@ -84,7 +86,7 @@ function App() {
             />
             <GroupTabs />
           </div>
-          <Clock className="app-clock" date={new Date()} />
+          <Clock className="app-clock" date={moment(new Date())} />
           <div className="app-nav-2">
             <Calculator triggerStyle="app-nav-btn" />
             <WorldClock triggerStyle="app-nav-btn" />

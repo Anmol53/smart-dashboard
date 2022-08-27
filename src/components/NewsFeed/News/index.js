@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import "./styles.css";
 
@@ -13,14 +14,8 @@ export default function News(props) {
           <p className="news-content">{props.content}</p>
           <span className="news-time">
             {props.time
-              ? new Date(props.time).toLocaleString("en-US", {
-                  weekday: "short",
-                  month: "short",
-                  day: "numeric",
-                  hour: "numeric",
-                  minute: "numeric",
-                })
-              : "."}
+              ? moment(props.time).format("ddd, MMM DD, hh:mm A")
+              : "-"}
           </span>
           <span className="news-author">
             {props.author

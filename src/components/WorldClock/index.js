@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import Modal from ".././Modal";
 import Clock from ".././Clock";
 import "./styles.css";
+import moment from "moment";
 export default function WorldClock(props) {
   const [location, setLocation] = useState("");
   const [blink, setBlink] = useState("");
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState(moment(new Date()));
   const [locations, setLocations] = useState([]);
   // TODO: CORS policy ¯\_(ツ)_/¯
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function WorldClock(props) {
       .then((r) => r.json())
       .then((r) => {
         console.log(r);
-        setValue(new Date(r.datetime));
+        setValue(moment(r.datetime));
       });
   }, [location]);
   return (
@@ -59,7 +60,7 @@ export default function WorldClock(props) {
             }
           }}
         ></i>
-        <Clock className="worldclock-result" date={new Date(value)} />
+        <Clock className="worldclock-result" date={value} />
       </div>
     </Modal>
   );
