@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import cities from "../Data/current-city-name.js";
+import cities from "../../Data/current-city-name.js";
 
 export default function Weather(props) {
   const BaseURL = "https://api.openweathermap.org/data/2.5/";

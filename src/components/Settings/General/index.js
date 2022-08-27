@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
-import cities from "../../Data/current-city-name.js";
-import countries from "../../Data/country-name.js";
+import cities from "../../../Data/current-city-name.js";
+import countries from "../../../Data/country-name.js";
 
 export default function General(props) {
   const [editableName, setEditableName] = useState(false);

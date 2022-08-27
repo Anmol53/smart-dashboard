@@ -4,7 +4,7 @@ import Clock from ".././Clock";
 import "./styles.css";
 import moment from "moment";
 import momentTZ from "moment-timezone";
-import timezones from "../Data/timezone.js";
+import timezones from "../../Data/timezone.js";
 
 export default function WorldClock(props) {
   const [location, setLocation] = useState("Etc/UTC");
