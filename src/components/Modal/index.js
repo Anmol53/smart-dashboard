@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 export default function Modal(props) {
   const [show, setShow] = useState(false);
   const [showClass, setShowClass] = useState("modal-container");
+
+  useEffect(() => {
+    if (props.setIsVisible) {
+      props.setIsVisible(show);
+    }
+  }, [show]);
+
   return (
     <>
       {props.icon ? (
